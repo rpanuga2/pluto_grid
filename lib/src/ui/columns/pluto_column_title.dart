@@ -251,12 +251,12 @@ class _BuildColumnWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: column!.width,
-      color: column!.titleBackgroundColor,
       height: PlutoGridSettings.rowHeight,
       padding:
           const EdgeInsets.symmetric(horizontal: PlutoGridSettings.cellPadding),
       decoration: stateManager!.configuration!.enableColumnBorder
           ? BoxDecoration(
+              color: column!.titleBackgroundColor,
               border: Border(
                 right: BorderSide(
                   color: stateManager!.configuration!.borderColor,
@@ -264,7 +264,7 @@ class _BuildColumnWidget extends StatelessWidget {
                 ),
               ),
             )
-          : const BoxDecoration(),
+          : BoxDecoration(color: column!.titleBackgroundColor),
       child: Align(
         alignment: Alignment.centerLeft,
         child: Row(
