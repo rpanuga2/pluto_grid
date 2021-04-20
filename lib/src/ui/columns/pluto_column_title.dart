@@ -394,7 +394,6 @@ class __ColumnTextWidgetState extends __ColumnTextWidgetStateWithChange {
   Widget build(BuildContext context) {
     return Text.rich(
       TextSpan(
-        style: TextStyle(color: widget.column!.titleColor),
         text: widget.column!.title,
         children: [
           if (isFilteredList!)
