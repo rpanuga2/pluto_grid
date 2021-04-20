@@ -12,7 +12,8 @@ Future<PlutoGridColumnMenuItem?>? showColumnMenu({
     return null;
   }
 
-  final RenderBox overlay = Overlay.of(context!)!.context.findRenderObject() as RenderBox;
+  final RenderBox overlay =
+      Overlay.of(context!)!.context.findRenderObject() as RenderBox;
 
   final Color? textColor = stateManager!.configuration!.cellTextStyle.color;
 
@@ -31,7 +32,10 @@ Future<PlutoGridColumnMenuItem?>? showColumnMenu({
     );
   };
 
-  final PopupMenuItem<PlutoGridColumnMenuItem> Function<PlutoGridColumnMenuItem>({Widget child, bool enabled, PlutoGridColumnMenuItem value}) buildMenuItem = <PlutoGridColumnMenuItem>({
+  final PopupMenuItem<PlutoGridColumnMenuItem> Function<
+              PlutoGridColumnMenuItem>(
+          {Widget child, bool enabled, PlutoGridColumnMenuItem value})
+      buildMenuItem = <PlutoGridColumnMenuItem>({
     PlutoGridColumnMenuItem? value,
     Widget? child,
     bool enabled = true,
@@ -52,12 +56,12 @@ Future<PlutoGridColumnMenuItem?>? showColumnMenu({
     position: RelativeRect.fromRect(
         position & const Size(40, 40), Offset.zero & overlay.size),
     items: [
-      if (column!.frozen.isFrozen == true)
+      if (!column!.disableColumnFreeze && column!.frozen.isFrozen == true)
         buildMenuItem(
           value: PlutoGridColumnMenuItem.unfreeze,
           child: buildTextItem(localeText.unfreezeColumn),
         ),
-      if (column.frozen.isFrozen != true) ...[
+      if (!column!.disableColumnFreeze && column.frozen.isFrozen != true) ...[
         buildMenuItem(
           value: PlutoGridColumnMenuItem.freezeToLeft,
           child: buildTextItem(localeText.freezeColumnToLeft),
@@ -68,10 +72,11 @@ Future<PlutoGridColumnMenuItem?>? showColumnMenu({
         ),
       ],
       const PopupMenuDivider(),
-      buildMenuItem(
-        value: PlutoGridColumnMenuItem.autoFit,
-        child: buildTextItem(localeText.autoFitColumn),
-      ),
+      if (column.enableHideColumnMenuItem == true && !column.disableAutofit)
+        buildMenuItem(
+          value: PlutoGridColumnMenuItem.autoFit,
+          child: buildTextItem(localeText.autoFitColumn),
+        ),
       if (column.enableHideColumnMenuItem == true)
         buildMenuItem(
           value: PlutoGridColumnMenuItem.hideColumn,

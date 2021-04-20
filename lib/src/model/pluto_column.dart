@@ -62,6 +62,12 @@ class PlutoColumn {
   /// Displays the right icon of the column title.
   bool enableContextMenu;
 
+  /// hides the freeze/unfreeze column menu
+  bool disableColumnFreeze;
+
+  /// disable autofit filter
+  bool disableAutofit;
+
   /// Displays filter-related menus in the column context menu.
   /// Valid only when [enableContextMenu] is activated.
   bool enableFilterMenuItem;
@@ -91,6 +97,8 @@ class PlutoColumn {
     this.textAlign = PlutoColumnTextAlign.left,
     this.frozen = PlutoColumnFrozen.none,
     this.sort = PlutoColumnSort.none,
+    this.disableColumnFreeze = false,
+    this.disableAutofit = false,
     this.formatter,
     this.applyFormatterInEditing = false,
     this.renderer,
