@@ -250,6 +250,7 @@ class _BuildColumnWidget extends StatelessWidget {
     return Container(
       width: column.width,
       height: PlutoGridSettings.rowHeight,
+      color: column.titleBackgroundColor,
       padding:
           const EdgeInsets.symmetric(horizontal: PlutoGridSettings.cellPadding),
       decoration: stateManager.configuration.enableColumnBorder
@@ -391,6 +392,7 @@ class __ColumnTextWidgetState extends __ColumnTextWidgetStateWithChange {
   Widget build(BuildContext context) {
     return Text.rich(
       TextSpan(
+        style: TextStyle(color: widget.column.titleColor),
         text: widget.column.title,
         children: [
           if (isFilteredList)

@@ -10,6 +10,12 @@ class PlutoColumn {
   /// A title to be displayed on the screen.
   String title;
 
+  /// Background color of the heading
+  Color titleBackgroundColor;
+
+  /// heading color
+  Color titleColor;
+
   /// Specifies the field name of the row to be connected to the column.
   String field;
 
@@ -76,6 +82,8 @@ class PlutoColumn {
 
   PlutoColumn({
     @required this.title,
+    this.titleBackgroundColor,
+    this.titleColor,
     @required this.field,
     @required this.type,
     this.width = PlutoGridSettings.columnWidth,
