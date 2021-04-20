@@ -61,7 +61,7 @@ Future<PlutoGridColumnMenuItem?>? showColumnMenu({
           value: PlutoGridColumnMenuItem.unfreeze,
           child: buildTextItem(localeText.unfreezeColumn),
         ),
-      if (!(column!.disableColumnFreeze) && column.frozen.isFrozen != true) ...[
+      if (!(column.disableColumnFreeze) && column.frozen.isFrozen != true) ...[
         buildMenuItem(
           value: PlutoGridColumnMenuItem.freezeToLeft,
           child: buildTextItem(localeText.freezeColumnToLeft),
