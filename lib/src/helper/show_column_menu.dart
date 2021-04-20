@@ -56,12 +56,12 @@ Future<PlutoGridColumnMenuItem?>? showColumnMenu({
     position: RelativeRect.fromRect(
         position & const Size(40, 40), Offset.zero & overlay.size),
     items: [
-      if (!column!.disableColumnFreeze && column!.frozen.isFrozen == true)
+      if (!(column!.disableColumnFreeze) && column.frozen.isFrozen == true)
         buildMenuItem(
           value: PlutoGridColumnMenuItem.unfreeze,
           child: buildTextItem(localeText.unfreezeColumn),
         ),
-      if (!column!.disableColumnFreeze && column.frozen.isFrozen != true) ...[
+      if (!(column!.disableColumnFreeze) && column.frozen.isFrozen != true) ...[
         buildMenuItem(
           value: PlutoGridColumnMenuItem.freezeToLeft,
           child: buildTextItem(localeText.freezeColumnToLeft),
@@ -70,8 +70,9 @@ Future<PlutoGridColumnMenuItem?>? showColumnMenu({
           value: PlutoGridColumnMenuItem.freezeToRight,
           child: buildTextItem(localeText.freezeColumnToRight),
         ),
+        const PopupMenuDivider(),
       ],
-      const PopupMenuDivider(),
+      // const PopupMenuDivider(),
       if (column.enableHideColumnMenuItem == true && !column.disableAutofit)
         buildMenuItem(
           value: PlutoGridColumnMenuItem.autoFit,
