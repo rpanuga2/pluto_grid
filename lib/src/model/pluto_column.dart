@@ -13,6 +13,8 @@ class PlutoColumn {
   /// Background color of the heading
   Color? titleBackgroundColor;
 
+  /// heading color
+  Color? titleColor;
 
   /// Specifies the field name of the row to be connected to the column.
   String field;
@@ -83,6 +85,7 @@ class PlutoColumn {
     required this.field,
     required this.type,
     this.titleBackgroundColor,
+    this.titleColor,
     this.width = PlutoGridSettings.columnWidth,
     this.minWidth = PlutoGridSettings.minColumnWidth,
     this.textAlign = PlutoColumnTextAlign.left,

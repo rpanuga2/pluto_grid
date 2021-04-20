@@ -410,7 +410,8 @@ class __ColumnTextWidgetState extends __ColumnTextWidgetStateWithChange {
             ),
         ],
       ),
-      style: widget.stateManager.configuration!.columnTextStyle,
+      style: widget.stateManager.configuration!.columnTextStyle
+          .copyWith(color: widget.column!.titleColor),
       overflow: TextOverflow.ellipsis,
       softWrap: false,
       maxLines: 1,
